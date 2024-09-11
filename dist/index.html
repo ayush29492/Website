@@ -26,21 +26,23 @@
     </div>
 	</div>
 	<script>
-        function filterData(data) {
-            return data.results.filter(item => {
-                const type = item.properties.Type.multi_select;
-                return type && type.some(select => select.name === 'research');  // Change condition as needed
-            });
+         function getAllData(data) {
+            return data.results; // Return all items
         }
 
-        // Function to display filtered data in the HTML
-        function displayData(filteredData) {
-            const listElement = document.getElementById('filtered-data');
-            listElement.innerHTML = '';  // Clear the previous content
-            
-            filteredData.forEach(item => {
+        // Function to display the data in the HTML
+        function displayData(allData) {
+            const listElement = document.getElementById('all-data');
+            listElement.innerHTML = ''; // Clear the previous content
+
+            allData.forEach(item => {
+                const name = item.properties.Name.title[0].text.content;
+                const date = item.properties.Date.date.start;
+                const grade = item.properties.Grade.rich_text[0].text.content;
+                const status = item.properties.Status.status.name;
+
                 const listItem = document.createElement('li');
-                listItem.textContent = `${item.properties.Name.title[0].text.content} - ${item.properties.Type.multi_select.map(type => type.name).join(', ')}`;
+                listItem.textContent = `Name: ${name}, Date: ${date}, Grade: ${grade}, Status: ${status}`;
                 listElement.appendChild(listItem);
             });
         }
@@ -49,7 +51,7 @@
           .then(response => response.json())
           .then(data => {
             
-            const filteredData = filterData(data);
+            const filteredData = getAllData(data);
             displayData(filteredData);
           })
           .catch(error => console.error('Error fetching data:', error));
