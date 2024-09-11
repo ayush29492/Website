@@ -20,12 +20,20 @@
 	</div>
 	<dive>
 		<h1>Notion API Data</h1>
-	    <button onclick="sendData()">Send Data to Notion API</button>
-	    <div class="data-container" id="dataContainer">
+	    <h1>Data from Server</h1>
+        <pre id="data"></pre>
        
     </div>
 	</div>
-	
+	<script>
+        // Fetch the data from the server
+        fetch('/.netlify/functions/notionapi')
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('data').textContent = JSON.stringify(data, null, 2);
+          })
+          .catch(error => console.error('Error fetching data:', error));
+      </script>
 
 </body>
 
