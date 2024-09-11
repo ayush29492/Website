@@ -26,11 +26,31 @@
     </div>
 	</div>
 	<script>
+        function filterData(data) {
+            return data.results.filter(item => {
+                const type = item.properties.Type.multi_select;
+                return type && type.some(select => select.name === 'research');  // Change condition as needed
+            });
+        }
+
+        // Function to display filtered data in the HTML
+        function displayData(filteredData) {
+            const listElement = document.getElementById('filtered-data');
+            listElement.innerHTML = '';  // Clear the previous content
+            
+            filteredData.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.properties.Name.title[0].text.content} - ${item.properties.Type.multi_select.map(type => type.name).join(', ')}`;
+                listElement.appendChild(listItem);
+            });
+        }
         // Fetch the data from the server
         fetch('/.netlify/functions/notionapi')
           .then(response => response.json())
           .then(data => {
-            document.getElementById('notion-data').textContent = JSON.stringify(data, null, 2);
+            
+            const filteredData = filterData(data);
+            displayData(filteredData);
           })
           .catch(error => console.error('Error fetching data:', error));
       </script>
