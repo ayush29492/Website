@@ -21,7 +21,7 @@
 	<dive>
 		<h1>Notion API Data</h1>
 	    <h1>Data from Server</h1>
-        <pre id="data"></pre>
+        <pre id="notion-data"></pre>
        
     </div>
 	</div>
@@ -30,7 +30,7 @@
         fetch('/.netlify/functions/notionapi')
           .then(response => response.json())
           .then(data => {
-            document.getElementById('data').textContent = JSON.stringify(data, null, 2);
+            document.getElementById('notion-data').textContent = JSON.stringify(data, null, 2);
           })
           .catch(error => console.error('Error fetching data:', error));
       </script>

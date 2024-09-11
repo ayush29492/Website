@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "netlify-lambda serve functions",  
-    "build": "netlify-lambda build functions",  
+    "dev": "netlify-lambda serve functions",
+    "build": "netlify-lambda build functions",
     "export": "next export",
-    "start": "netlify-lambda serve functions",  
-    "build-site": "next build && next export", 
-    "start-api": "netlify-lambda serve functions" 
+    "start": "netlify-lambda serve functions",
+    "build-site": "next build && next export",
+    "start-api": "netlify-lambda serve functions"
   },
   "keywords": [],
   "author": "",
@@ -16,10 +16,12 @@
   "description": "",
   "dependencies": {
     "express": "^5.0.0",
+    "fs": "^0.0.1-security",
     "netlify-lambda": "^2.0.16",
     "next": "^14.2.9",
     "node-fetch": "^3.3.2",
     "nodemon": "^3.1.4",
+    "path": "^0.12.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "serverless-http": "^3.2.0"
