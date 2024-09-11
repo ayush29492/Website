@@ -4,12 +4,11 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Records</title>
+	<title>Dashboard</title>
     <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 	<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <aside class="sidebar">
         <div class="sidebar-header">
@@ -75,6 +74,54 @@
           </div>
         </div>
       </aside>
+<div class="header-image">
+</div>
+<div id="dashboard">
+	<div>
+	    <h1 class="header-text">
+	        Statistics
+	    </h1>
+	</div>
+	<div>
+		<h1>Notion API Data</h1>
+	    <h1>Data from Server</h1>
+        <pre id="all-data"></pre>
+       
+    </div>
+</div>
+</div>
+	<script>
+         function getAllData(data) {
+            return data.results; // Return all items
+        }
+
+        // Function to display the data in the HTML
+        function displayData(allData) {
+            const listElement = document.getElementById('all-data');
+            listElement.innerHTML = ''; // Clear the previous content
+
+            allData.forEach(item => {
+                const name = item.properties.Name.title[0].text.content;
+                const date = item.properties.Date.date.start;
+                const grade = item.properties.Grade.rich_text[0].text.content;
+                const status = item.properties.Status.status.name;
+
+                const listItem = document.createElement('li');
+                listItem.textContent = `Name: ${name}, Date: ${date}, Grade: ${grade}, Status: ${status}`;
+                listElement.appendChild(listItem);
+            });
+        }
+        // Fetch the data from the server
+        fetch('/.netlify/functions/notionapi')
+          .then(response => response.json())
+          .then(data => {
+            
+            const filteredData = getAllData(data);
+            displayData(filteredData);
+          })
+          .catch(error => console.error('Error fetching data:', error));
+      </script>
+
 </body>
 
 </html>
