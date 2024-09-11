@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "export": "next export",
-    "start": "next start",
+    
+    "build": "netlify-lambda build src",
     "start-api": "netlify-lambda serve functions"
   },
   "keywords": [],
