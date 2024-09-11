@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    
-    "build": "netlify-lambda build src",
-    "start-api": "netlify-lambda serve functions"
+    "dev": "netlify-lambda serve functions",  
+    "build": "netlify-lambda build functions",  
+    "start": "netlify-lambda serve functions",  
+    "build-site": "next build && next export", 
+    "start-api": "netlify-lambda serve functions" 
   },
   "keywords": [],
   "author": "",
