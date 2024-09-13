@@ -10,6 +10,15 @@
     min-height: 100vh;
     background: rgb(25, 25, 25);
   }
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+  
 /* Container holding the image and the text */
 .header-image {
             width: 100%;
@@ -145,4 +154,14 @@
 .sidebar:hover .user-account {
   background: #fff;
   border-radius: 4px;
+}
+.chart-container {
+    width: 80%;
+    margin: auto;
+}
+.chart-bar {
+    background-color: #3498db; /* Bar color */
+}
+.chart-bar:hover {
+    background-color: #2980b9; /* Hover color */
 }
