@@ -18,7 +18,7 @@
     "chart.js": "^4.4.4",
     "express": "^5.0.0",
     "fs": "^0.0.1-security",
-    "netlify-lambda": "^0.4.0",
+    "netlify-lambda": "^2.0.16",
     "next": "^14.2.9",
     "node-fetch": "^2.7.0",
     "nodemon": "^3.1.4",
