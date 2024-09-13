@@ -18,6 +18,21 @@
     padding: 10px;
     box-sizing: border-box;
 }
+.image-container {
+  position: relative;
+  height: 100vh; /* Ensure container height */
+  margin: 0 auto;
+  padding: 40px;
+  box-sizing: border-box;
+}
+.my-image {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: 0;
+  max-width: 20%;
+ 
+}
   
 /* Container holding the image and the text */
 .header-image {
@@ -32,9 +47,13 @@
     padding-left: 2vh;
     font-size: 3em;
     color: whitesmoke;
+    text-align: center;
+    text-shadow: 13px 9px 20px black;
+
 }
+
 .item {
-            border: 1px solid #ccc;
+            border: 1px solid #6e6e6e;
             margin-bottom: 10px;
             padding: 10px;
         }
